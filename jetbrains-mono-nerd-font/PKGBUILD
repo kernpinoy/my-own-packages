@@ -1,0 +1,22 @@
+pkgname=nerd-fonts-jetbrains-mono
+_name=JetBrainsMono
+pkgver=2.3.3
+pkgrel=1
+pkgdesc="A Nerd Font patched version of JetBrains Mono"
+arch=('any')
+url="https://www.nerdfonts.com"
+license=('MIT')
+makedepends=('fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir' 'fontforge')
+conflicts=('nerd-fonts' 'nerd-fonts-complete')
+install="$pkgname.install"
+source=("$_name-$pkgver.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/$_name.zip"
+        "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/LICENSE")
+sha256sums=('187c316bb77ed1c824099fe8621a17d14f7de8a6ce5b14a1a04de0ae674b4aa6'
+	    '1f6ad4edae6479aaace3112ede5279a23284ae54b2a34db66357aef5f64df160')
+package() {
+	install -dm755 "$pkgdir/usr/share/fonts/TTF"
+	find . -iname "*.ttf" -not -iname "*Windows Compatible.ttf" \
+		-execdir install -m644 {} "$pkgdir/usr/share/fonts/TTF/{}" \;
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+}
