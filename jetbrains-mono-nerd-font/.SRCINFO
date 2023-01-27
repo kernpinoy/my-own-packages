@@ -9,7 +9,6 @@ pkgbase = nerd-fonts-jetbrains-mono
 	makedepends = fontconfig
 	makedepends = xorg-mkfontscale
 	makedepends = xorg-mkfontdir
-	makedepends = fontforge
 	conflicts = nerd-fonts
 	conflicts = nerd-fonts-complete
 	source = JetBrainsMono-2.3.3.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip
